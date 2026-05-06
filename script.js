@@ -1,5 +1,9 @@
+// The Global variables which are the human score and computer score
+
 let humanScore = 0;
 let computerScore = 0;
+
+// This function gets the computers choice using Math.random
 function getComputerChoice() {
   let num = Math.floor(Math.random() * 3);
 
@@ -15,6 +19,7 @@ function getComputerChoice() {
   }
 }
 
+// The function prompts the user to enter their input
 function getHumanChoice() {
   let person = prompt("Please enter rock, paper, or scissors");
 
@@ -30,7 +35,10 @@ function getHumanChoice() {
   return person.toLowerCase();
 }
 
+//Function for each individual round between the computer and the user.
+
 function playRound(humanChoice, computerChoice) {
+  // Logic if user choses rock
   if (humanChoice == "rock") {
     if (computerChoice == "rock") {
       console.log("It is a tie");
@@ -41,6 +49,7 @@ function playRound(humanChoice, computerChoice) {
       console.log("You lost. Paper beats rock.");
       computerScore += 1;
     }
+    // Logic if user chooses paper
   } else if (humanChoice == "paper") {
     if (computerChoice == "paper") {
       console.log("It is a tie");
@@ -51,6 +60,7 @@ function playRound(humanChoice, computerChoice) {
       console.log("You lost. Scissors beats paper.");
       computerScore += 1;
     }
+    // Logic if user chooses scissors
   } else if (humanChoice == "scissors") {
     if (computerChoice == "scissors") {
       console.log("It is a tie");
@@ -64,6 +74,7 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+// Function for the 5 rounds of gameplay.
 function playGame() {
   for (let i = 0; i < 5; i++) {
     let computerChoice = getComputerChoice();
@@ -75,6 +86,7 @@ function playGame() {
   }
 }
 
+// Playing the game and determining the winner
 console.log(playGame());
 if (humanScore > computerScore) {
   console.log("You have won and beat the computer!");
@@ -83,5 +95,3 @@ if (humanScore > computerScore) {
 } else {
   console.log("You guys tied. What a great battle.");
 }
-
-// playRound(humanChoice, computerChoice);
