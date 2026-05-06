@@ -76,5 +76,12 @@ function playGame() {
 }
 
 console.log(playGame());
+if (humanScore > computerScore) {
+  console.log("You have won and beat the computer!");
+} else if (computerScore > humanScore) {
+  console.log("You lost. Better luck next time!");
+} else {
+  console.log("You guys tied. What a great battle.");
+}
 
 // playRound(humanChoice, computerChoice);
