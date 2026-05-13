@@ -7,6 +7,7 @@ const sect = document.querySelector("#results");
 const para = document.createElement("p");
 const currentScore = document.createElement("p");
 const winner = document.createElement("p");
+const computerText = document.createElement("p");
 
 // This function gets the computers choice using Math.random
 function getComputerChoice() {
@@ -14,30 +15,23 @@ function getComputerChoice() {
 
   if (num == 0) {
     console.log("Computer chooses rock");
+    computerText.textContent = "Computer chooses rock";
+    sect.appendChild(computerText);
+
     return "rock";
   } else if (num == 1) {
     console.log("Computer chooses paper");
+    computerText.textContent = "Computer chooses paper";
+    sect.appendChild(computerText);
+
     return "paper";
   } else {
     console.log("Computer chooses scissors");
+    computerText.textContent = "Computer chooses scissors";
+    sect.appendChild(computerText);
+
     return "scissors";
   }
-}
-
-// The function prompts the user to enter their input
-function getHumanChoice() {
-  let person = prompt("Please enter rock, paper, or scissors");
-
-  if (person.toLowerCase() == "rock") {
-    console.log("You have chosen rock");
-  } else if (person.toLowerCase() == "paper") {
-    console.log("You have chosen paper");
-  } else if (person.toLowerCase() == "scissors") {
-    console.log("You have chosen scissors");
-  } else {
-    console.log("You did not enter a valid choice");
-  }
-  return person.toLowerCase();
 }
 
 //Function for each individual round between the computer and the user.
@@ -87,16 +81,21 @@ function playGame(humanChoice) {
       computerScore += 1;
     }
   }
+
+  //Prints the ongoing score of the game.
   let scoreText =
     "Human score: " + humanScore + "," + " Computer score: " + computerScore;
   currentScore.textContent = scoreText;
   sect.appendChild(currentScore);
 
+  // When the game determines that the is a winner variables get reset and the outcome is displayed
   if (humanScore == 5) {
     currentScore.textContent = `You have won and beat the computer!
      The final score was: ${scoreText}`;
     sect.appendChild(currentScore);
     sect.removeChild(para);
+    sect.removeChild(computerText);
+
     para.textContent = "";
     ((humanScore = 0), (computerScore = 0));
   } else if (computerScore == 5) {
@@ -104,16 +103,12 @@ function playGame(humanChoice) {
       The final score was: ${scoreText}`;
     sect.appendChild(currentScore);
     sect.removeChild(para);
+    sect.removeChild(computerText);
+
     para.textContent = "";
     ((humanScore = 0), (computerScore = 0));
   }
 }
-
-// Playing the game and determining the winner
-// getHumanChoice();
-// getComputerChoice();
-// playRound();
-// console.log(playGame());
 
 document.querySelector("#rock").addEventListener("click", () => {
   console.log("YOu pressed rock button");
@@ -129,6 +124,3 @@ document.querySelector("#scissors").addEventListener("click", () => {
   console.log("YOu pressed scissors button");
   playGame("scissors");
 });
-
-// para.textContent = "testing";
-// sect.appendChild(para);
