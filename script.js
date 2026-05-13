@@ -5,6 +5,8 @@ let computerScore = 0;
 
 const sect = document.querySelector("#results");
 const para = document.createElement("p");
+const currentScore = document.createElement("p");
+const winner = document.createElement("p");
 
 // This function gets the computers choice using Math.random
 function getComputerChoice() {
@@ -40,7 +42,7 @@ function getHumanChoice() {
 
 //Function for each individual round between the computer and the user.
 
-function playRound(humanChoice) {
+function playGame(humanChoice) {
   // Logic if user choses rock
   let computerChoice = getComputerChoice();
   if (humanChoice == "rock") {
@@ -85,18 +87,17 @@ function playRound(humanChoice) {
       computerScore += 1;
     }
   }
-}
+  let scoreText =
+    "Human score: " + humanScore + "," + " Computer score: " + computerScore;
+  currentScore.textContent = scoreText;
+  sect.appendChild(currentScore);
 
-// Function for the 5 rounds of gameplay.
-function playGame(buttonChoice) {
-  // for (let i = 0; i < 5; i++) {
-  let computerChoice = getComputerChoice();
-  //let humanChoice = getHumanChoice();
-  playRound(buttonChoice, computerChoice);
-  console.log(
-    "Human score: " + humanScore + "," + " Computer score: " + computerScore,
-  );
-  // }
+  if (humanScore == 5) {
+    winner.textContent = "You have won and beat the computer!";
+  } else if (computerScore == 5) {
+    winner.textContent = "You lost. Better luck next time!";
+  }
+  sect.appendChild(winner);
 }
 
 // Playing the game and determining the winner
@@ -107,26 +108,18 @@ function playGame(buttonChoice) {
 
 document.querySelector("#rock").addEventListener("click", () => {
   console.log("YOu pressed rock button");
-  playRound("rock");
+  playGame("rock");
 });
 
 document.querySelector("#paper").addEventListener("click", () => {
   console.log("YOu pressed paper button");
-  playRound("paper");
+  playGame("paper");
 });
 
 document.querySelector("#scissors").addEventListener("click", () => {
   console.log("YOu pressed scissors button");
-  playRound("scissors");
+  playGame("scissors");
 });
 
 // para.textContent = "testing";
 // sect.appendChild(para);
-
-if (humanScore > computerScore) {
-  console.log("You have won and beat the computer!");
-} else if (computerScore > humanScore) {
-  console.log("You lost. Better luck next time!");
-} else {
-  console.log("You guys tied. What a great battle.");
-}
