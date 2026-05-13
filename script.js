@@ -93,11 +93,20 @@ function playGame(humanChoice) {
   sect.appendChild(currentScore);
 
   if (humanScore == 5) {
-    winner.textContent = "You have won and beat the computer!";
+    currentScore.textContent = `You have won and beat the computer!
+     The final score was: ${scoreText}`;
+    sect.appendChild(currentScore);
+    sect.removeChild(para);
+    para.textContent = "";
+    ((humanScore = 0), (computerScore = 0));
   } else if (computerScore == 5) {
-    winner.textContent = "You lost. Better luck next time!";
+    currentScore.textContent = `You lost. Better luck next time!
+      The final score was: ${scoreText}`;
+    sect.appendChild(currentScore);
+    sect.removeChild(para);
+    para.textContent = "";
+    ((humanScore = 0), (computerScore = 0));
   }
-  sect.appendChild(winner);
 }
 
 // Playing the game and determining the winner
