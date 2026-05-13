@@ -59,23 +59,29 @@ function playRound(humanChoice) {
     // Logic if user chooses paper
   } else if (humanChoice == "paper") {
     if (computerChoice == "paper") {
-      console.log("It is a tie");
+      para.textContent = "It is a tie";
+      sect.appendChild(para);
     } else if (computerChoice == "rock") {
-      console.log("You won! Paper beats rock.");
+      para.textContent = "You won! Paper beats rock.";
+      sect.appendChild(para);
       humanScore += 1;
     } else {
-      console.log("You lost. Scissors beats paper.");
+      para.textContent = "You lost. Scissors beats paper.";
+      sect.appendChild(para);
       computerScore += 1;
     }
     // Logic if user chooses scissors
   } else if (humanChoice == "scissors") {
     if (computerChoice == "scissors") {
-      console.log("It is a tie");
+      para.textContent = "It is a tie";
+      sect.appendChild(para);
     } else if (computerChoice == "paper") {
-      console.log("You won! Scissors beats paper.");
+      para.textContent = "You won! Scissors beats paper.";
+      sect.appendChild(para);
       humanScore += 1;
     } else {
-      console.log("You lost. Rock beats scissors.");
+      para.textContent = "You lost. Rock beats scissors.";
+      sect.appendChild(para);
       computerScore += 1;
     }
   }
