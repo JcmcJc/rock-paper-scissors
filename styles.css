@@ -18,7 +18,8 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  border: solid;
+  border: 2px solid black;
+  border-radius: 80px;
   height: 70%;
   width: 70%;
   background-color: white;
