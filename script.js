@@ -14,20 +14,17 @@ function getComputerChoice() {
   let num = Math.floor(Math.random() * 3);
 
   if (num == 0) {
-    console.log("Computer chooses rock");
-    computerText.textContent = "Computer chooses rock";
+    computerText.textContent = "Computer Choice: Rock";
     sect.appendChild(computerText);
 
     return "rock";
   } else if (num == 1) {
-    console.log("Computer chooses paper");
-    computerText.textContent = "Computer chooses paper";
+    computerText.textContent = "Computer Choice: Paper";
     sect.appendChild(computerText);
 
     return "paper";
   } else {
-    console.log("Computer chooses scissors");
-    computerText.textContent = "Computer chooses scissors";
+    computerText.textContent = "Computer Choice: Scissors";
     sect.appendChild(computerText);
 
     return "scissors";
@@ -84,14 +81,17 @@ function playGame(humanChoice) {
 
   //Prints the ongoing score of the game.
   let scoreText =
-    "Human score: " + humanScore + "," + " Computer score: " + computerScore;
+    "Player score: " + humanScore + "," + " Computer score: " + computerScore;
   currentScore.textContent = scoreText;
   sect.appendChild(currentScore);
 
   // When the game determines that the is a winner variables get reset and the outcome is displayed
   if (humanScore == 5) {
-    currentScore.textContent = `You have won and beat the computer!
-     The final score was: ${scoreText}`;
+    const winningString = `You have won and beat the computer!
+
+    The final score was: ${scoreText}`;
+    currentScore.textContent = winningString;
+    currentScore.style.whiteSpace = "pre-line";
     sect.appendChild(currentScore);
     sect.removeChild(para);
     sect.removeChild(computerText);
@@ -99,8 +99,12 @@ function playGame(humanChoice) {
     para.textContent = "";
     ((humanScore = 0), (computerScore = 0));
   } else if (computerScore == 5) {
-    currentScore.textContent = `You lost. Better luck next time!
-      The final score was: ${scoreText}`;
+    const losingString = `You lost. Better luck next time!
+
+    The final score was: ${scoreText}`;
+    currentScore.textContent = losingString;
+    currentScore.style.whiteSpace = "pre-line";
+
     sect.appendChild(currentScore);
     sect.removeChild(para);
     sect.removeChild(computerText);
@@ -111,16 +115,13 @@ function playGame(humanChoice) {
 }
 
 document.querySelector("#rock").addEventListener("click", () => {
-  console.log("YOu pressed rock button");
   playGame("rock");
 });
 
 document.querySelector("#paper").addEventListener("click", () => {
-  console.log("YOu pressed paper button");
   playGame("paper");
 });
 
 document.querySelector("#scissors").addEventListener("click", () => {
-  console.log("YOu pressed scissors button");
   playGame("scissors");
 });
